@@ -1,7 +1,7 @@
 package com.example.kotlinbasicspractice
 
 /*create a main function - entry point of app*/
-fun main(){
+fun main() {
     /*body of the function*/
     val myName = "Marcus"
     /*assign new value to myName*/
@@ -15,7 +15,6 @@ fun main(){
 //    comments goes here
     /*comments goes here - multi line comment*/
 //    TODO: comments go here
-
 
 
 //    TODO - different types of integer variables
@@ -36,8 +35,8 @@ fun main(){
 //    Floating point number types: Float (32 bit), Double (64 bit)
 //    add an F at the end of value to make variable an float
     val mySimpleFloat = 13.37F
-    val myDouble:Double = 3.123454667667887
-    val myFloat:Float = 134.37F
+    val myDouble: Double = 3.123454667667887
+    val myFloat: Float = 134.37F
     myFloat
     mySimpleFloat
     myDouble
@@ -81,24 +80,24 @@ fun main(){
        'a'*/
 
     // Answers listed below
-    var title : String = "Android Masterclass"
-    val pointsPerGame : Float = 13.37F
-    val piValue : Double = 3.14159265358979
-    var jerseyNum : Byte = 25
-    var year : Short = 2020
-    var creditCardNum : Long = 18881234567
-    var passingGrade : Boolean = true
-    var letterGrade : Char = 'a'
+    var title: String = "Android Masterclass"
+    val pointsPerGame: Float = 13.37F
+    val piValue: Double = 3.14159265358979
+    var jerseyNum: Byte = 25
+    var year: Short = 2020
+    var creditCardNum: Long = 18881234567
+    var passingGrade: Boolean = true
+    var letterGrade: Char = 'a'
 
     /*TODO: Arithmetic operators ( +, -, *, /, %)*/
-    var results = 5+3
+    var results = 5 + 3
 //    results value will be the total of the equation
 //    divide results by 2
     results /= 2
     results *= 4
     results -= 2
 //    using a % symbol will give the remainder - right now results = 14
-    results %=3
+    results %= 3
 //    print("" + results + "\n")
     val a = 5.0
     val b = 3
@@ -110,10 +109,10 @@ fun main(){
     *  (==, !=, <, >, <=, >= )*/
 //    Does the left side equal the right side?
 //    uses Boolean expression
-    val isEqual = 5==3
+    val isEqual = 5 == 3
 //    println("is 5 equal to 3 $isEqual")
 
-    val isNotEqual = 5!=5
+    val isNotEqual = 5 != 5
 //    println("is 5 not equal to 5 is $isNotEqual")
 //    println("is 5 greater 3 is ${5>3}")
 //    println("is 5 less Then 3 is ${5<3}")
@@ -144,8 +143,8 @@ fun main(){
 
 
     /*TODO If / else / else if Conditions*/
-    var heightPerson1:Short = 132
-    var heightPerson2:Short = 132
+    var heightPerson1: Short = 132
+    var heightPerson2: Short = 132
 //    each statement gets own {} - if starts statement - else ends statement
 //    use as many else if statements as you want - as long as it makes since
     /*if(heightPerson1 > heightPerson2){
@@ -235,8 +234,111 @@ fun main(){
         else -> println("'$x' is not a Int , Double or a String!")
     }
     println("$anyResults")
-     */
 
-    /*TODO While Loop*/
-    
+
+    /*TODO While Loop
+    *  While loop executes a block of code repeatedly as long as a given
+    *  condition is true*/
+    var x = 1
+    while(x<=10){
+        println("$x")
+//        increment x until condition is fails
+        x++
+    }
+    println("exiting loop")
+    x = 100
+    println("starting from 100 decrement down to 0 every even number")
+    while(x>=0){
+        println("$x")
+        x -=2
+    }
+    println("exiting loop")
+
+    /*TODO Do while loops - repeat code until condition is met */
+    var x=15
+    do{
+        println("$x")
+        x++
+    }while(x<=10)
+
+    var feltTemp = "cold"
+    var roomTemp = 10
+    while (feltTemp == "cold"){
+        roomTemp++
+        if (roomTemp >= 20){
+            feltTemp = "comfy"
+            println("its comfy now")
+        }
+        else{
+            println("too cold")
+        }
+        println("end of loop")
+    }
+
+    /*TODO For Loops*/
+//    number in range of 1 through 10 - using until 10 (10 wont print)
+    for (num in 1..10){
+        println("$num")
+    }
+    println("end of loop")
+    for(num in 1.until(10)){
+        println("$num")
+    }
+    println("end if loop")
+// using step to skip
+    for (i in 10 downTo 1 step 2){
+        println("$i")
+    }
+//    Another way to write code
+    for (x in (10).downTo(1).step(2)){
+        println("$x")
+    }
+     */
+    /*TODO Loop Exercise
+    *  Write a for loop that runs from 0 to 10000
+    *  Once its at 9001 it should write "ITS OVER 9000!"
+    *  Write a while loop that checks the humidity( not the humidity level)
+    *  The variable humidityLevel starts at 80. The variable humidity is initialized
+    *  with humid. If it is "humid" then it should reduce the "humidityLevel" by 5
+    *  and print "humidity decreased" Once the humidityLevel is below 60 it should print
+    *  " its comfy now" and set the humidity to "comfy"*/
+
+    /* TODO For Loop example*/
+    for (num in 0.until(10000)){
+      if (num == 9000){
+          println("ITS Over $num!!")
+      }
+    }
+    println("end of for loop exercise")
+
+    /*TODO While loop Exercise*/
+    var humidity = "Humid"
+    var humidityLevel = 80
+    while (humidityLevel >= 60){
+        humidityLevel -= 5
+        println("Humidity decreased")
+        if (humidityLevel<60){
+            println("Its comfy now")
+            humidity = "comfy"
+        }
+        /*TODO Break and Continue*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
 }
