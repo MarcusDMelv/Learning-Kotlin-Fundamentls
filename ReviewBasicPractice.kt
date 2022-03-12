@@ -32,6 +32,11 @@ fun main() {
     // created variables from attributes in objects
     val(brand,number) = shoe3
     println("$brand and $number")
+    // TODO Inheritance
+    var student1 = Math("Jessica",11,2.8)
+    var student2 =English("Mike",12,2.1,'D')
+    student1.read(35.4)
+    student2.needFocus(2.3)
 
 
 
@@ -80,3 +85,27 @@ class Bank(balance:Double=00.00,userAccount:String="UserName",salary: Double=00.
 // TODO Data Classes
 
 data class Shoes(val brand: String, val number: Int)
+
+
+// TODO Inheritance
+// must open
+// Parent class
+open class Student(val name:String, var age:Int){
+    //properties
+    var studyTime:Double = 00.00
+
+    //methods
+    fun needFocus(time:Double){
+        if (time>0)
+            studyTime += time
+    }
+    fun read(timeRead:Double){
+        println("Read for $timeRead minutes")
+    }
+}
+//sub class of Student()
+open class Math(name: String,age: Int,var gpa: Double) : Student(name,age){
+
+}
+// sub class of Math()
+open class English(name: String, age: Int, gpa: Double,var readingLevel:Char) : Math(name, age, gpa) {}
