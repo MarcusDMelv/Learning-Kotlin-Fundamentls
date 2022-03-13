@@ -5,7 +5,7 @@ package com.example.kotlinbasicspractice
 *  Focused more on exception handling and OOP Concepts
 *  Spent a couple weeks going over basic practices.
 *  Spent a couple days understanding exception handling and OOP Concepts
-*  Inheritance/Classes-(Abstract,Parent,Child,constructors)/Collection/Null/Data types/ Interfaces Lambda Expressions
+*  Inheritance/Classes-(Abstract,Parent,Child,constructors)/Collection/Null/Data types/ Interfaces/Lambda Expressions
 *  Objects*/
 
 fun main() {
@@ -17,6 +17,8 @@ fun main() {
     bankAccount0.addMoney()
     bankAccount0.printBalance()
     bankAccount0.deposit = 50.21
+    bankAccount0.checkAmount = 45.90
+    bankAccount0.deposit()
     bankAccount0.addMoney()
     bankAccount0.printBalance()
     var bankAccount1 = Bank(userAccount = "Frank Ortiz")
@@ -36,6 +38,7 @@ fun main() {
     var student1 = Math("Jessica",11,2.8)
     var student2 =English("Mike",12,2.1,'D')
     student1.read(35.4)
+    student2.read(30.2)
     student2.needFocus(2.3)
 
 
@@ -45,11 +48,19 @@ fun main() {
 
 
 }
+
+//TODO interfaces extend class
+interface CheckDeposits{
+    var checkAmount:Double
+    fun deposit(){
+        println("$checkAmount was deposit into account")
+    }
+}
 // creating a class
-class Bank(balance:Double=00.00,userAccount:String="UserName",salary: Double=00.00) {
+class Bank(balance:Double=00.00, private var userAccount: String = "UserName", salary: Double=00.00,
+           override var checkAmount: Double=0.00):CheckDeposits {
     // Members/Properties
-    var balance = balance
-    private var userAccount = userAccount
+    private var balance = balance
     var deposit: Double? = null
     private var salary: Double? = salary
     // this runs when object is created
@@ -68,6 +79,13 @@ class Bank(balance:Double=00.00,userAccount:String="UserName",salary: Double=00.
         if (salary != 00.00 && userAccount!="UserName") {
             println("Client:$userAccount Salary:$salary Bank Account Balance:$balance\n")
         }
+    }
+
+    override fun deposit() {
+        //call function from super class - from interface
+        super.deposit()
+        balance += checkAmount
+        println("Check amount of $checkAmount was added with new balance of :$balance")
     }
     // add to balance - Scope and Shadowing
     fun addMoney(){
@@ -92,20 +110,23 @@ data class Shoes(val brand: String, val number: Int)
 // Parent class
 open class Student(val name:String, var age:Int){
     //properties
-    var studyTime:Double = 00.00
+    open var studyTime:Double = 00.00
 
     //methods
     fun needFocus(time:Double){
         if (time>0)
             studyTime += time
     }
-    fun read(timeRead:Double){
+    open fun read(timeRead:Double){
         println("Read for $timeRead minutes")
     }
 }
 //sub class of Student()
 open class Math(name: String,age: Int,var gpa: Double) : Student(name,age){
-
+// must open properties and methods to override them - polymorphism
+    override fun read(timeRead: Double){
+        println("Did math problems for $timeRead")
+    }
 }
 // sub class of Math()
-open class English(name: String, age: Int, gpa: Double,var readingLevel:Char) : Math(name, age, gpa) {}
+open class English(name: String, age: Int, gpa: Double,var readingLevel:Char) : Student(name, age) {}
